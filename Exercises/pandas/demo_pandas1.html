@@ -1,0 +1,195 @@
+<html>
+<head>
+  <link rel="stylesheet" media="print" href="../../theme/css/print.css">
+  <link rel="stylesheet" media="screen, projection" href="../../theme/css/screen.css">
+  <style>  
+    body {
+    background-color: white;
+    padding : 10px;
+    overflow : scroll;
+    }
+  </style>
+<title>Pandas - Exercise 1</title>
+</head>
+
+<body>
+<h1>Exercise pandas.1</h1>
+<p>
+  The goal of this exercise is to give you some intuition surrounding pandas series, even though you don't know much about them.  Observe some of the practical things you can do with series, and we'll cover them in depth after this exercise.
+</p>
+<h4>Part 1 Series</h4>
+Let's construct a few series objets
+<pre>
+  
+In [119]: import pandas as pd
+
+In [121]: import numpy as np
+    
+In [124]: tempdata = np.random.random(10)
+
+In [125]: myseries = pd.Series(tempdata)
+Out[125]: 
+0    0.633662
+1    0.891208
+2    0.089418
+3    0.378502
+4    0.332353
+5    0.197462
+6    0.393405
+7    0.963471
+8    0.903013
+9    0.874429
+In [134]: myseries.view(np.ndarray)
+Out[134]: 
+array([ 0.63366185,  0.8912075 ,  0.08941835,  0.37850218,  0.33235333,
+        0.19746155,  0.39340542,  0.96347111,  0.9030125 ,  0.87442945])
+In [136]: myseries.index
+Out[136]: Int64Index([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+</pre>
+<p>
+Try assigning a value to the index.  What happens?.
+</p>
+
+<h4>Part 2 slicing series</h4>
+Try selecting some values, as well as slicing the series.
+
+</p>
+
+<pre>
+In [162]: myseries = pd.Series(tempdata)
+
+In [163]: myseries[0]
+Out[163]: 0.63366184950819637
+
+In [164]: myseries[1]
+Out[164]: 0.89120750001255988
+
+In [165]: myseries[:3]
+Out[165]: 
+0    0.633662
+1    0.891208
+2    0.089418
+
+In [166]: myseries[-1]
+---------------------------------------------------------------------------
+KeyError                                  Traceback (most recent call last)
+<ipython-input-166-5eaf80bfcc8a> in <module>()
+----> 1 myseries[-1]
+</pre>
+<p>
+Why is this error present? Consider the example below.
+</p>
+
+<pre>
+In [173]: newseries = myseries[2:6]
+
+In [174]: newseries
+Out[174]: 
+2    0.089418
+3    0.378502
+4    0.332353
+5    0.197462
+
+In [177]: newseries[:3]
+Out[177]: 
+2    0.089418
+3    0.378502
+4    0.332353
+
+In [178]: newseries[3]
+Out[178]: 0.37850218067422114
+</pre>
+<p>
+Look real carefully at that example.  Try it in your ipython shell to verify that you're seeing the same behavior.  <i>Hint:</i> Does the 3 represent the same element in both examples?  Because of this, I only recommend using integer values as series indexes if they coincide with the row number of the element
+</p>
+<h4>Part 3 constructing series</h4>
+<pre>
+In [145]: myseries = pandas.Series(np.random.random(5), index=['a','b','c','d','e'])
+
+In [146]: myseries
+Out[146]: 
+a    0.640006
+b    0.986814
+c    0.836189
+d    0.363189
+e    0.874257
+
+In [147]: myseries = pandas.Series(dict(a=1,b=2,c=3,d=4,e=5))
+
+In [148]: myseries
+Out[148]: 
+a    1
+b    2
+c    3
+d    4
+e    5
+</pre>
+<p>
+Try indexing with integers, slicing with integers, as well as indexing and slicing with strings.  Why does this happen
+</p>  
+<pre>
+In [154]: myseries['c':'a']
+Out[154]: Series([], dtype=int64)
+</pre>
+How are slicing with row labels different than slicing with integers?  try slicing first with ":2", then with ":'c'"
+<pre>
+In [179]: myseries = pandas.Series(dict(a=1,b=2,c=3,d=4,e=5))
+
+In [180]: myseries[:2]
+Out[180]: 
+a    1
+b    2
+
+In [181]: myseries[:'c']
+Out[181]: 
+a    1
+b    2
+c    3
+</pre>
+
+<h4>Part 4 math</h4>
+<p>
+Series objects inherit from numpy array
+<pre>
+In [187]: isinstance(myseries, np.ndarray)
+Out[187]: True
+</pre>
+As such, all the operations you're used to doing on numpy arrays, work on series.  However, indexes get aligned in most operations.
+</p>
+<pre>
+In [182]: myseries = pandas.Series(dict(a=1,b=2,c=3,d=4,e=5))
+
+In [183]: myseries2 = pandas.Series(dict(a=1,b=2,c=3,d=4,f=10))
+
+In [184]: myseries
+Out[184]: 
+a    1
+b    2
+c    3
+d    4
+e    5
+
+In [185]: myseries2
+Out[185]: 
+a     1
+b     2
+c     3
+d     4
+f    10
+
+In [186]: myseries + myseries2
+Out[186]: 
+a     2
+b     4
+c     6
+d     8
+e   NaN
+f   NaN
+</pre>
+<p>
+What is going on here?
+</p>
+</body>
+</html>
+
+

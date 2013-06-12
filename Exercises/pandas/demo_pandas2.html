@@ -1,0 +1,269 @@
+<html>
+<head>
+  <link rel="stylesheet" media="print" href="../../theme/css/print.css">
+  <link rel="stylesheet" media="screen, projection" href="../../theme/css/screen.css">
+  <style>  
+    body {
+    background-color: white;
+    padding : 10px;
+    overflow : scroll;
+    }
+  </style>
+<title>Pandas - Exercise 2</title>
+</head>
+
+<body>
+<h1>Exercise pandas.2</h1>
+<p>
+  The goal of this exercise is to give you some intuition surrounding pandas dataframes, even though you don't know much about them.  Observe some of the practical things you can do with dataframes, and we'll cover them in depth after this exercise.
+</p>
+<h4>Part 1 DataFrame</h4>
+Let's construct a dataframe
+<pre>
+In [119]: import pandas as pd
+In [121]: import numpy as np
+    
+In [231]: mydf = pd.DataFrame({'a' : np.random.random(5), 'number 2' : np.random.random(5)})
+
+In [232]: mydf
+Out[232]: 
+          a  number 2
+0  0.610911  0.351520
+1  0.078769  0.928161
+2  0.992111  0.023642
+3  0.551904  0.120229
+4  0.947457  0.509627
+</pre>
+
+<p>
+Try selecting the columns using attribute, vs getitem notation ".a" vs "['a']".  Notice how you cannot do that with column "number 2", since "number 2" is not a valid python variable name.  
+</p>
+<p>
+Pull out both columns 'a', and `number 2`, and inspect their types.  They both have indexes which are similar, use the "is" operator to verify whether or not they are the same object.
+</p>
+<pre>
+In [233]: type(mydf.a)
+Out[233]: pandas.core.series.Series
+
+In [234]: type(mydf['number 2'])
+Out[234]: pandas.core.series.Series
+
+In [235]: mydf.a.index is mydf['number 2'].index
+Out[235]: True
+</pre>
+<p>
+Try constructing some dataframes using nested dictionaries.  What happens when the keys do not match?
+</p>
+<pre>
+In [236]: mydf = pd.DataFrame({'a' : dict(d=1, e=2, f=3), 'b' : dict(d=2, e=2, f=3)})
+
+In [237]: mydf
+Out[237]: 
+   a  b
+d  1  2
+e  2  2
+f  3  3
+
+In [238]: mydf = pd.DataFrame({'a' : dict(d=1, e=2, f=3), 'b' : dict(d=2, e=2, g=3)})
+
+In [239]: mydf
+Out[239]: 
+    a   b
+d   1   2
+e   2   2
+f   3 NaN
+g NaN   3
+</pre>
+
+<h4>Part 2 slicing DataFrames</h4>
+Generate the following example dataframe
+<pre>
+
+In [240]: mydf = pd.DataFrame({'a' : np.random.random(10), 'b':np.random.random(10), 'c' : np.random.random(10)})
+
+In [241]: mydf
+Out[241]: 
+          a         b         c
+0  0.279242  0.214857  0.804074
+1  0.554743  0.382514  0.710394
+2  0.452695  0.402964  0.037077
+3  0.186505  0.611359  0.653514
+4  0.757018  0.767458  0.840413
+5  0.306164  0.990464  0.413441
+6  0.520582  0.527663  0.814912
+7  0.678462  0.903620  0.066026
+8  0.343097  0.970553  0.671160
+9  0.177472  0.216930  0.068192
+
+</pre>
+Try a few operations on the dataframe, without using 'ix':
+<ul>
+  <li>
+    select a single value from column a
+  </li>
+  <li>
+    slice a few values from column b
+  </li>
+  <li>
+    slice a few rows from the whole dataframe
+  </li>
+  <li>
+    subselect a few columns from the DataFrame by passing in a list of column names
+  </li>
+  <li>
+    slice a few rows, and then select a few columns from that output
+  </li>    
+</ul>
+<pre>
+In [244]: mydf.a[1]
+Out[244]: 0.55474317541941964
+
+In [245]: mydf['b'][1]
+Out[245]: 0.38251416799988502
+
+In [246]: mydf[2:4]
+Out[246]: 
+          a         b         c
+2  0.452695  0.402964  0.037077
+3  0.186505  0.611359  0.653514
+
+
+In [255]: mydf[['b', 'c']]
+Out[255]: 
+          b         c
+0  0.214857  0.804074
+1  0.382514  0.710394
+2  0.402964  0.037077
+3  0.611359  0.653514
+4  0.767458  0.840413
+5  0.990464  0.413441
+6  0.527663  0.814912
+7  0.903620  0.066026
+8  0.970553  0.671160
+9  0.216930  0.068192
+
+In [256]: mydf[:3][['b', 'c']]
+Out[256]: 
+          b         c
+0  0.214857  0.804074
+1  0.382514  0.710394
+2  0.402964  0.037077
+</pre>
+
+<h4>Part 3 slicing DataFrames with ix</h4>
+<pre>
+
+In [259]: mydf = pd.DataFrame({'a' : np.random.random(5), 'b':np.random.random(5), 'c' : np.random.random(5)}, index=['one', 'two', 'three', 'four', 'five'])
+
+In [260]: mydf
+Out[260]: 
+              a         b         c
+one    0.713482  0.475779  0.688198
+two    0.496188  0.461957  0.151512
+three  0.624689  0.065706  0.595481
+four   0.919868  0.693171  0.015740
+five   0.163169  0.946599  0.624213
+  
+</pre>
+<ul>
+  <li>
+    select a single row using an integer, "mydf.ix[1]"
+  </li>
+  <li>
+    select a single row using a string, "mydf.ix['two']"
+  </li>
+  <li>
+    select a slice using rowlabels, everything from "two" to "four".  Is this inclusive or exclusive?
+  </li>
+  <li>
+    Redo the selection you just did, but pick out columns b and c.    
+  </li>
+  <li>
+    Can you re-order colums b and c?
+  </li>
+  <li>
+    Can you re-order rows 'two' and 'four'?
+  </li>
+</ul>
+<pre>
+In [261]: mydf.ix[1]
+Out[261]: 
+a    0.496188
+b    0.461957
+c    0.151512
+Name: two
+
+In [262]: mydf.ix['two']
+Out[262]: 
+a    0.496188
+b    0.461957
+c    0.151512
+Name: two
+
+In [263]: mydf.ix['two':'four']
+Out[263]: 
+              a         b         c
+two    0.496188  0.461957  0.151512
+three  0.624689  0.065706  0.595481
+four   0.919868  0.693171  0.015740
+
+In [264]: mydf.ix['two':'four', ['b', 'c']]
+Out[264]: 
+              b         c
+two    0.461957  0.151512
+three  0.065706  0.595481
+four   0.693171  0.015740
+
+In [265]: mydf.ix['two':'four', 'b':'c']
+Out[265]: 
+              b         c
+two    0.461957  0.151512
+three  0.065706  0.595481
+four   0.693171  0.015740
+
+In [266]: mydf.ix['two':'four', ['b', 'c']]
+Out[266]: 
+              b         c
+two    0.461957  0.151512
+three  0.065706  0.595481
+four   0.693171  0.015740
+
+In [267]: mydf.ix[['four', 'two'], ['b', 'c']]
+Out[267]: 
+             b         c
+four  0.693171  0.015740
+two   0.461957  0.151512
+
+</pre>
+<h4>Part 4 re-indexing, setting the index</h4>
+
+<pre>
+In [259]: mydf = pd.DataFrame({'a' : np.random.random(5), 'b':np.random.random(5), 'c' : np.random.random(5)}, index=['one', 'two', 'three', 'four', 'five'])
+
+In [260]: mydf
+Out[260]: 
+              a         b         c
+one    0.713482  0.475779  0.688198
+two    0.496188  0.461957  0.151512
+three  0.624689  0.065706  0.595481
+four   0.919868  0.693171  0.015740
+five   0.163169  0.946599  0.624213
+</pre>
+<ul>
+<li>
+  We want to set the index to [1,2,3,4,5].  Try calling reindex with that argument. what happens (hint, it does not work!).  Fortunately, this does not default to inplace modification, so you still have your existing dataframe.
+</li>
+<li>
+  call reindex with ['one', 'two', 'foo'], and look at the result.  Do you understand what reindex does now?
+</li>
+<li>
+  What you really want in this case is set_index.  set_index is setup to handle columns. call set_index with (['a', 'b'])
+
+</li>
+
+</li>
+</ul>
+</body>
+</html>
+
+
