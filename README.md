@@ -1,5 +1,7 @@
-Recap: SciPy 2013 Data Processing Tutorial
+SciPy 2013 Data Processing Tutorial
 ====
+
+##Recap
 
 Ben and I wanted to take a minute today to thank everyone for coming to our tutorial. We hope you all learned something new and useful, and encourage everyone to continue the lively discussions from the sessions throughout this week and beyond. Towards that aim of facilitating further discussion of these topics, here is a quick rundown of the topics we went over and some additional resources for those interested in learning more.
 
@@ -12,8 +14,11 @@ Ben and I wanted to take a minute today to thank everyone for coming to our tuto
 * Indices are optional, but allow features like selection of date ranges. 
 * Handles missing data well, provided you tell it what missing data looks like with `na_values`.
 * Resampling and reindexing are powerful. Learn them, love them.
-* **Exercise 1:** TODO: FILL THIS IN
-* **Exercise 2:** TODO: FILL THIS IN
+* **Exercises:**
+    * Demo 1: Series
+    * Demo 2: DataFrame
+    * Exercise: Continous Glucose Monitor Data
+        * Solutions in "Solutions" folder
 * **Recommended text:** [Python for Data Analysis, by Wes McKinney](http://shop.oreilly.com/product/0636920023784.do).
 
 ## IPCluster
@@ -24,7 +29,6 @@ Ben and I wanted to take a minute today to thank everyone for coming to our tuto
 
         from IPython.parallel import Client
         client = Client()
-
 * Execute commands with view methods e.g. `direct.execute('foo()')` **not** `client.execute('foo()')`.
 * IPCluster is ideal for embarassingly parallel workloads that are CPU/GPU/RAM-heavy and light on data transfer.
 * **Exercise:** MCMC sampling for Bayesian Estimation. <------ LINK TO BUNDLE
@@ -54,4 +58,4 @@ Ben and I wanted to take a minute today to thank everyone for coming to our tuto
 * K-means clustering tries to group "similar" data points together.
     * The number of clusters K is an input parameter. This is good or bad depending on the problem.
     * Methods like Bayesian Information Content can help determine K from the data if it is unknown.
-* **Exercises:** K-means and PCA clustering
+* **Exercises:** K-means and PCA clustering.
