@@ -31,9 +31,10 @@ Ben and I wanted to take a minute today to thank everyone for coming to our tuto
         client = Client()
 * Execute commands with view methods e.g. `direct.execute('foo()')` **not** `client.execute('foo()')`.
 * IPCluster is ideal for embarassingly parallel workloads that are CPU/GPU/RAM-heavy and light on data transfer.
-* **Exercise:** MCMC sampling for Bayesian Estimation. <------ LINK TO BUNDLE
-* **Recommended notebook:** [Introduction to Parallel Python with IPCluster and Wakari, Ian Stokes-Rees](https://www.wakari.io/sharing/bundle/ijstokes/ipcluster-wakari-intro).
-* **Recommended text:** [Doing Bayesian Data Analysis, John K Kruschke](http://www.indiana.edu/~kruschke/DoingBayesianDataAnalysis/).
+* **Exercise:** IPCluster Basics
+* **Exercise:** Bayesian Estimation w/ MCMC and IPCluster. [Clone this notebook in Wakari!](https://wakari.io)
+* **Recommended notebook:** [Introduction to Parallel Python with IPCluster and Wakari](https://www.wakari.io/sharing/bundle/ijstokes/ipcluster-wakari-intro), Ian Stokes-Rees.
+* **Recommended text:** [Doing Bayesian Data Analysis](http://www.indiana.edu/~kruschke/DoingBayesianDataAnalysis/), John K Kruschke.
 
 ## MapReduce
 
@@ -46,8 +47,8 @@ Ben and I wanted to take a minute today to thank everyone for coming to our tuto
 * MapReduce as a concept is separate from its implementations. Popular implementations include Disco and Hadoop.
 * **Exercise:** Bitly data from `.gov` and `.mil`
 * **Exercise:** WikiLogs
-* **Recommended blogposts:** [Map / Reduce – A Visual Explanation, Ayende Rahien](http://ayende.com/blog/4435/map-reduce-a-visual-explanation), and its follow-up [What is map/reduce for, anyway?](http://ayende.com/blog/4436/what-is-map-reduce-for-anyway).
-* **Recommended reading:** [MapReduce: Simplified Data Processing on Large Clusters, Jeffrey Dean and Sanjay Ghemawat](www.usenix.org/event/osdi04/tech/full_papers/dean/dean.pdf)
+* **Recommended blogposts:** [Map/Reduce – A visual explanation](http://ayende.com/blog/4435/map-reduce-a-visual-explanation), and its follow-up [What is map/reduce for, anyway?](http://ayende.com/blog/4436/what-is-map-reduce-for-anyway) by Ayende Rahien.
+* **Recommended reading:** [MapReduce: Simplified Data Processing on Large Clusters](www.usenix.org/event/osdi04/tech/full_papers/dean/dean.pdf) by Jeffrey Dean and Sanjay Ghemawat.
 
 ## Data Exploration
 ### (Unsupervised machine learning)
