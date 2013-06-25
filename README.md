@@ -32,7 +32,7 @@ Ben and I wanted to take a minute today to thank everyone for coming to our tuto
 * Execute commands with view methods e.g. `direct.execute('foo()')` **not** `client.execute('foo()')`.
 * IPCluster is ideal for embarassingly parallel workloads that are CPU/GPU/RAM-heavy and light on data transfer.
 * **Exercise:** IPCluster Basics
-* **Exercise:** Bayesian Estimation w/ MCMC and IPCluster. [Clone this notebook in Wakari!](https://wakari.io)
+* **Exercise:** Bayesian Estimation w/ MCMC and IPCluster ([view/clone this notebook with Wakari](https://www.wakari.io/sharing/bundle/clayadavis/ipcluster_mcmc)).
 * **Recommended notebook:** [Introduction to Parallel Python with IPCluster and Wakari](https://www.wakari.io/sharing/bundle/ijstokes/ipcluster-wakari-intro), Ian Stokes-Rees.
 * **Recommended text:** [Doing Bayesian Data Analysis](http://www.indiana.edu/~kruschke/DoingBayesianDataAnalysis/), John K Kruschke.
 
