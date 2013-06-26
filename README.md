@@ -3,7 +3,7 @@ SciPy 2013 Data Processing Tutorial
 
 ##Recap
 
-Ben and I wanted to take a minute today to thank everyone for coming to our tutorial. We hope you all learned something new and useful, and encourage everyone to continue the lively discussions from the sessions throughout this week and beyond. Towards that aim of facilitating further discussion of these topics, here is a quick rundown of the topics we went over and some additional resources for those interested in learning more.
+Thank you to everyone for coming to our tutorial. We hope you all learned something new and useful, and encourage everyone to continue the lively discussions from the sessions throughout this week and beyond. Towards that aim of facilitating further discussion of these topics, here is a quick rundown of the topics we went over and some additional resources for those interested in learning more.
 
 * The [tutorial GitHub repo](https://github.com/quasiben/scipy2013) contains the slides and exercises, and should stay up for a while.
 * Your demo accounts on [Wakari.io](https://wakari.io) are not permanent, but it's super easy to sign up for a free account. Wakari is in active development, so if there's a feature you want or an annoyance you don't, feel free to [give us a shout](wakari_support@continuum.io)!
