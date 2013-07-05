@@ -15,11 +15,25 @@ Thank you to everyone for coming to our tutorial. We hope you all learned someth
 * Handles missing data well, provided you tell it what missing data looks like with `na_values`.
 * Resampling and reindexing are powerful. Learn them, love them.
 * **Exercises:**
-    * Demo 1: Series
-    * Demo 2: DataFrame
-    * Exercise: Continous Glucose Monitor Data
-        * Solutions in "Solutions" folder
+    * Demo 1: [Series](https://github.com/quasiben/scipy2013/blob/master/Exercises/pandas/demo_pandas1.html)
+    * Demo 2: [DataFrame](https://github.com/quasiben/scipy2013/blob/master/Exercises/pandas/demo_pandas2.html)
+    * Exercise: [Continous Glucose Monitor Analysis](https://github.com/quasiben/scipy2013/blob/master/Exercises/pandas/ex_pandas1.html)
+        * [Solutions](https://www.wakari.io/nb/url/https://raw.github.com/quasiben/scipy2013/master/Solutions/CGM_Exercise1.ipynb)
 * **Recommended text:** [Python for Data Analysis, by Wes McKinney](http://shop.oreilly.com/product/0636920023784.do).
+
+## Data Exploration
+### (Unsupervised machine learning)
+
+* Principal Component Analysis (PCA) and Singular Value Decomposition (SVD) find the axes with highest variance.
+    * These high variance axes represent the "important" variables.
+    * Implementations in Numpu/Scipy and SciKits-Learn
+* K-means clustering tries to group "similar" data points together.
+    * The number of clusters K is an input parameter. This is good or bad depending on the problem.
+    * Methods like Bayesian Information Content can help determine K from the data if it is unknown.
+* **Exercises:** [PCA](https://www.wakari.io/nb/url/https://raw.github.com/quasiben/scipy2013/master/Exercises/data_exploration/PCA.ipynb) and [K-means](https://www.wakari.io/nb/url/https://raw.github.com/quasiben/scipy2013/master/Exercises/data_exploration/KMeans_Clustering.ipynb).
+* **Recommended reading/examples:**
+ * [Paper on PCA](http://www.cs.princeton.edu/picasso/mats/PCA-Tutorial-Intuition_jp.pdf)
+ * [Jake Vanderplas's GitRepo](https://github.com/jakevdp/sklearn_scipy2013)
 
 ## IPCluster
 
@@ -44,19 +58,13 @@ Thank you to everyone for coming to our tutorial. We hope you all learned someth
     * Map step filters data (SELECT BY ...), outputs key/value pair (SQL GROUP BY key).
     * Partitioning sends k/v pairs such that all pairs with similar key go to same reduce node.
     * Reduce step performs the aggregate function (COUNT, SUM, GROUP CONCAT) on all values with the same key.
-* MapReduce as a concept is separate from its implementations. Popular implementations include Disco and Hadoop.
-* **Exercise:** Bitly data from `.gov` and `.mil`
-* **Exercise:** WikiLogs
-* **Recommended blogposts:** [Map/Reduce – A visual explanation](http://ayende.com/blog/4435/map-reduce-a-visual-explanation), and its follow-up [What is map/reduce for, anyway?](http://ayende.com/blog/4436/what-is-map-reduce-for-anyway) by Ayende Rahien.
+* MapReduce as a concept is separate from its implementations. Popular implementations include [Disco](http://discoproject.org) and [Hadoop](http://hadoop.apache.org).
+* **Exercise:** [Bitly](https://github.com/quasiben/scipy2013/blob/master/Exercises/MapReduce/top10_bitly.py) 
+ * [data](http://bitly.measuredvoice.com/bitly_archive/?C=M;O=D) - [bitly](http://bitly.com) shortened urls with `.gov` and `.mil` suffixes
+* **Exercise:** [WikiLogs]((https://github.com/quasiben/scipy2013/blob/master/Exercises/MapReduce/wiki_log.py)
+ * [data](http://dumps.wikimedia.org/other/pagecounts-raw/2013/2013-01/') - hourly summary statistics from Wikipedia
+* **Recommended blogposts:** 
+ * [Count Words Part 1](http://continuum.io/blog/counting-words-part-1) and [Count Words Part 2](http://continuum.io/blog/counting-words-part-2)
+ * [Map/Reduce – A visual explanation](http://ayende.com/blog/4435/map-reduce-a-visual-explanation), and its follow-up [What is map/reduce for, anyway?](http://ayende.com/blog/4436/what-is-map-reduce-for-anyway) by Ayende Rahien.
 * **Recommended reading:** [MapReduce: Simplified Data Processing on Large Clusters](www.usenix.org/event/osdi04/tech/full_papers/dean/dean.pdf) by Jeffrey Dean and Sanjay Ghemawat.
 
-## Data Exploration
-### (Unsupervised machine learning)
-
-* Principal Component Analysis (PCA) and Singular Value Decomposition (SVD) find the axes with highest variance.
-    * These high variance axes represent the "important" variables.
-    * Implementations in Numpu/Scipy and SciKits-Learn
-* K-means clustering tries to group "similar" data points together.
-    * The number of clusters K is an input parameter. This is good or bad depending on the problem.
-    * Methods like Bayesian Information Content can help determine K from the data if it is unknown.
-* **Exercises:** K-means and PCA clustering.
